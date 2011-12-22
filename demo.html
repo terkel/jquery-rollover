@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Demo: jQuery Rollover plugin</title>
+<style>
+body { background-color: pink; }
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="jquery.rollover.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('.rollover').rollover();
+    $('.rollover-fade').rollover({ fade: true, fadeInDuration: 400, fadeOutDuration: 800 });
+});
+</script>
+</head>
+<body>
+<a href="#"><img class="rollover" src="img/demo.png" alt=""></a>
+<a href="#"><img class="rollover" src="img/demo-c.png" alt=""></a>
+<a href="#"><img class="rollover-fade" src="img/demo-o.png" alt=""></a>
+<a href="#"><img class="rollover-fade" src="img/demo-alpha.png" alt=""></a>
+</body>
+</html>
