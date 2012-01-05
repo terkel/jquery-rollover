@@ -1,5 +1,5 @@
 /*!
- * jQuery Rollover plugin v0.9
+ * jQuery Rollover plugin v0.9.1
  * https://github.com/terkel/jquery-rollover
  *
  * Copyright (c) 2011 Takeru Suzuki, http://terkel.jp/
@@ -11,6 +11,9 @@
             originalRegex = new RegExp('(' + opts.originalSuffix + ')?(\.gif|\.jpe?g|\.png)$', 'i'),
             currentRegex = new RegExp('(' + opts.currentSuffix + ')(\.gif|\.jpe?g|\.png)$', 'i');
         return this.each(function () {
+            if (opts.ignoreClass && $(this).closest('.' + opts.ignoreClass).length) {
+                return;
+            }
             var $this = $(this),
                 $link = $this.closest('a'),
                 $elem = $link.is('a')? $link: $this,
@@ -56,6 +59,7 @@
         rolloverSuffix:        '-r',
         currentSuffix:         '-c',
         currentRolloverSuffix: '-cr',
+        ignoreClass:           '',
         fade:                  false,
         fadeInDuration:        200,
         fadeOutDuration:       400

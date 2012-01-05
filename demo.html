@@ -11,13 +11,14 @@ body { background-color: pink; }
 <script src="jquery.rollover.js"></script>
 <script type="text/javascript">
 $(function () {
-    $('.rollover').rollover();
+    $('.rollover').rollover({ ignoreClass: 'ignore' });
     $('.rollover-fade').rollover({ fade: true, fadeInDuration: 400, fadeOutDuration: 800 });
 });
 </script>
 </head>
 <body>
 <a href="#"><img class="rollover" src="img/demo.png" alt=""></a>
+<a href="#" class="ignore"><img class="rollover" src="img/demo.png" alt=""></a>
 <a href="#"><img class="rollover" src="img/demo-c.png" alt=""></a>
 <a href="#"><img class="rollover-fade" src="img/demo-o.png" alt=""></a>
 <a href="#"><img class="rollover-fade" src="img/demo-alpha.png" alt=""></a>
