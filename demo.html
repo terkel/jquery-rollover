@@ -6,6 +6,7 @@
 <title>Demo: jQuery Rollover plugin</title>
 <style>
 body { background-color: pink; }
+.wrapper { display: inline-block; padding:0 20px 20px; background-color: white; }
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="jquery.rollover.js"></script>
@@ -13,12 +14,14 @@ body { background-color: pink; }
 $(function () {
     $('.rollover').rollover({ ignoreClass: 'ignore' });
     $('.rollover-fade').rollover({ fade: true, fadeInDuration: 400, fadeOutDuration: 800 });
+    $('.rollover-parent').rollover({ parent: '.wrapper' });
 });
 </script>
 </head>
 <body>
 <a href="#"><img class="rollover" src="img/demo.png" alt=""></a>
 <a href="#" class="ignore"><img class="rollover" src="img/demo.png" alt=""></a>
+<span class="wrapper"><a href="#"><img class="rollover-parent" src="img/demo.png" alt=""></a></span>
 <a href="#"><img class="rollover" src="img/demo-c.png" alt=""></a>
 <a href="#"><img class="rollover-fade" src="img/demo-o.png" alt=""></a>
 <a href="#"><img class="rollover-fade" src="img/demo-alpha.png" alt=""></a>

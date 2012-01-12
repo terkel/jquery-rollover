@@ -1,8 +1,8 @@
 /*!
- * jQuery Rollover plugin v0.9.1
+ * jQuery Rollover plugin v0.9.2
  * https://github.com/terkel/jquery-rollover
  *
- * Copyright (c) 2011 Takeru Suzuki, http://terkel.jp/
+ * Copyright (c) 2012 Takeru Suzuki, http://terkel.jp/
  * Licensed under the MIT license: http://www.opensource.org/licenses/MIT
  */
 (function ($) {
@@ -15,8 +15,7 @@
                 return;
             }
             var $this = $(this),
-                $link = $this.closest('a'),
-                $elem = $link.is('a')? $link: $this,
+                $elem = (opts.parent)? $this.closest(opts.parent): $this,
                 originalSrc = $this.attr('src'),
                 rolloverSrc = (currentRegex.test(originalSrc))?
                     originalSrc.replace(currentRegex, opts.currentRolloverSuffix + '$2'):
@@ -55,6 +54,7 @@
         });
     };
     $.fn.rollover.defaults = {
+        parent:                '',
         originalSuffix:        '-o',
         rolloverSuffix:        '-r',
         currentSuffix:         '-c',
