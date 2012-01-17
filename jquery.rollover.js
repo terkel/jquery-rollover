@@ -3,9 +3,10 @@
  * https://github.com/terkel/jquery-rollover
  *
  * Copyright (c) 2012 Takeru Suzuki, http://terkel.jp/
- * Licensed under the MIT license: http://www.opensource.org/licenses/MIT
+ * Licensed under the MIT license, http://www.opensource.org/licenses/MIT
  */
 (function ($) {
+
     $.fn.rollover = function (options) {
         var opts = $.extend({}, $.fn.rollover.defaults, options),
             originalRegex = new RegExp('(' + opts.originalSuffix + ')?(\.gif|\.jpe?g|\.png)$', 'i'),
@@ -53,6 +54,7 @@
             }
         });
     };
+
     $.fn.rollover.defaults = {
         parent:                '',
         originalSuffix:        '-o',
@@ -64,4 +66,5 @@
         fadeInDuration:        200,
         fadeOutDuration:       400
     };
+
 })(jQuery);
