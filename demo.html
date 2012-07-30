@@ -11,6 +11,13 @@ body { background-color: pink; }
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="jquery.rollover.js"></script>
 <script type="text/javascript">
+$.fn.rollover.defaults = {
+    originalSuffix:        '-o',
+    rolloverSuffix:        '-r',
+    currentSuffix:         '-c',
+    currentRolloverSuffix: '-cr'
+};
+
 $(function () {
     $('.rollover').rollover({ ignoreClass: 'ignore' });
     $('.rollover-fade').rollover({ fade: true, fadeInDuration: 400, fadeOutDuration: 800 });

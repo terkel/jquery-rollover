@@ -1,18 +1,22 @@
 /*!
- * jQuery Rollover plugin v0.9.2
+ * jQuery Rollover plugin v0.9.3
  * https://github.com/terkel/jquery-rollover
  *
- * Copyright (c) 2012 Takeru Suzuki, http://terkel.jp/
- * Licensed under the MIT license, http://www.opensource.org/licenses/MIT
+ * Copyright (c) 2012 Takeru Suzuki - http://terkel.jp/
+ * Licensed under the MIT license - http://www.opensource.org/licenses/MIT
  */
 (function ($) {
 
     $.fn.rollover = function (options) {
         var opts = $.extend({}, $.fn.rollover.defaults, options),
-            originalRegex = new RegExp('(' + opts.originalSuffix + ')?(\.gif|\.jpe?g|\.png)$', 'i'),
-            currentRegex = new RegExp('(' + opts.currentSuffix + ')(\.gif|\.jpe?g|\.png)$', 'i');
+            ext = '(\.gif|\.jpe?g|\.png)$',
+            originalRegex = new RegExp('(' + opts.originalSuffix + ')?' + ext, 'i'),
+            currentRegex = new RegExp('(' + opts.currentSuffix + ')' + ext, 'i');
         return this.each(function () {
             if (opts.ignoreClass && $(this).closest('.' + opts.ignoreClass).length) {
+                return;
+            }
+            if (opts.auto && !originalRegex.test( $(this).attr('src') )) {
                 return;
             }
             var $this = $(this),
@@ -56,11 +60,12 @@
     };
 
     $.fn.rollover.defaults = {
+        auto:                  false,
         parent:                '',
-        originalSuffix:        '-o',
-        rolloverSuffix:        '-r',
-        currentSuffix:         '-c',
-        currentRolloverSuffix: '-cr',
+        originalSuffix:        '-off',
+        rolloverSuffix:        '-on',
+        currentSuffix:         '-coff',
+        currentRolloverSuffix: '-con',
         ignoreClass:           '',
         fade:                  false,
         fadeInDuration:        200,
