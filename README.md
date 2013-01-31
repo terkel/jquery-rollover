@@ -1,1 +1,0 @@
-See [terkel/jquery-imagerollover](https://github.com/terkel/jquery-imagerollover)
