@@ -7,7 +7,7 @@
 <script src="./jquery.rolloverimage.js"></script>
 <script>
 $(function () {
-    $('img').rolloverImage();
+    $('body').rolloverImage();
     $('.alpha').rolloverImage({ fade: true });
 });
 </script>
@@ -16,15 +16,15 @@ $(function () {
 
 <img src="./img/1-off.png" alt="1" height="100" width="160">
 
-<a href="#"><img src="./img/2-off.png" alt="2" height="100" width="160"></a>
+<input type="image" src="./img/2-off.png" alt="2" height="100" width="160">
 
 <a href="#" style="display:inline-block;background-color:pink;padding:1em;">
     <img src="./img/3-off.png" alt="3" height="100" width="160">
     <img src="./img/lenna.jpg" alt="" height="100" width="160">
 </a>
 
-<a href="#" class="alpha" style="display:inline-block;background-color:pink;padding:1em;position:relative;">
-    <img src="./img/alpha-off.png" alt="" height="100" width="100">
+<a href="#" style="display:inline-block;background-color:pink;padding:1em;position:relative;">
+    <img src="./img/alpha-off.png" alt="" height="100" width="100" class="alpha">
 </a>
 
 </body>
