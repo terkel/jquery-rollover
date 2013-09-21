@@ -2,35 +2,30 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Demo: jQuery Rollover plugin</title>
-<style>
-body { background-color: pink; }
-.wrapper { display: inline-block; padding:0 20px 20px; background-color: white; }
-</style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="jquery.rollover.js"></script>
-<script type="text/javascript">
-$.fn.rollover.defaults = {
-    originalSuffix:        '-o',
-    rolloverSuffix:        '-r',
-    currentSuffix:         '-c',
-    currentRolloverSuffix: '-cr'
-};
-
+<title>Demo: jQuery Rollover Image plugin</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="./jquery.rolloverimage.js"></script>
+<script>
 $(function () {
-    $('.rollover').rollover({ ignoreClass: 'ignore' });
-    $('.rollover-fade').rollover({ fade: true, fadeInDuration: 400, fadeOutDuration: 800 });
-    $('.rollover-parent').rollover({ parent: '.wrapper' });
+    $('img').rolloverImage();
+    $('.alpha').rolloverImage({ fade: true });
 });
 </script>
 </head>
 <body>
-<a href="#"><img class="rollover" src="img/demo.png" alt=""></a>
-<a href="#" class="ignore"><img class="rollover" src="img/demo.png" alt=""></a>
-<span class="wrapper"><a href="#"><img class="rollover-parent" src="img/demo.png" alt=""></a></span>
-<a href="#"><img class="rollover" src="img/demo-c.png" alt=""></a>
-<a href="#"><img class="rollover-fade" src="img/demo-o.png" alt=""></a>
-<a href="#"><img class="rollover-fade" src="img/demo-alpha.png" alt=""></a>
+
+<img src="./img/1-off.png" alt="1" height="100" width="160">
+
+<a href="#"><img src="./img/2-off.png" alt="2" height="100" width="160"></a>
+
+<a href="#" style="display:inline-block;background-color:pink;padding:1em;">
+    <img src="./img/3-off.png" alt="3" height="100" width="160">
+    <img src="./img/lenna.jpg" alt="" height="100" width="160">
+</a>
+
+<a href="#" class="alpha" style="display:inline-block;background-color:pink;padding:1em;position:relative;">
+    <img src="./img/alpha-off.png" alt="" height="100" width="100">
+</a>
+
 </body>
 </html>
