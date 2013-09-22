@@ -22,6 +22,7 @@
         $images.each(function () {
 
             var $image = $(this),
+                originalAlt = $image.attr('alt'),
                 originalSrc = $image.attr('src'),
                 rolloverSrc = originalSrc.replace(originalRegex, options.rolloverSuffix + '$2'),
                 $rolloverImage = $('<img/>').attr('src', rolloverSrc),
@@ -33,12 +34,24 @@
             if (options.fade && $.support.opacity) {
                 $image.before($rolloverImage.css({ opacity: 0, position: 'absolute' }));
                 handlerIn = function () {
-                    $rolloverImage.stop(true).animate({ opacity: 1 }, options.fadeInDuration);
-                    $image.stop(true).animate({ opacity: 0 }, options.fadeInDuration);
+                    $rolloverImage.
+                        attr('alt', originalAlt).
+                        stop(true).
+                        animate({ opacity: 1 }, options.fadeInDuration);
+                    $image.
+                        attr('alt', '').
+                        stop(true).
+                        animate({ opacity: 0 }, options.fadeInDuration);
                 };
                 handlerOut = function () {
-                    $rolloverImage.stop(true).animate({ opacity: 0 }, options.fadeOutDuration);
-                    $image.stop(true).animate({ opacity: 1 }, options.fadeOutDuration);
+                    $rolloverImage.
+                        attr('alt', '').
+                        stop(true).
+                        animate({ opacity: 0 }, options.fadeOutDuration);
+                    $image.
+                        attr('alt', originalAlt).
+                        stop(true).
+                        animate({ opacity: 1 }, options.fadeOutDuration);
                 };
             } else {
                 handlerIn = function () {
