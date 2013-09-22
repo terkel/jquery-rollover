@@ -34,24 +34,28 @@
             if (options.fade && $.support.opacity) {
                 $image.before($rolloverImage.css({ opacity: 0, position: 'absolute' }));
                 handlerIn = function () {
+                    var duration = options.fadeInDuration,
+                        easing = options.fadeInEasing;
                     $rolloverImage.
                         attr('alt', originalAlt).
                         stop(true).
-                        animate({ opacity: 1 }, options.fadeInDuration, options.fadeInEasing);
+                        animate({ opacity: 1 }, duration, easing);
                     $image.
                         attr('alt', '').
                         stop(true).
-                        animate({ opacity: 0 }, options.fadeInDuration, options.fadeInEasing);
+                        animate({ opacity: 0 }, duration, easing);
                 };
                 handlerOut = function () {
+                    var duration = options.fadeOutDuration,
+                        easing = options.fadeOutEasing;
                     $rolloverImage.
                         attr('alt', '').
                         stop(true).
-                        animate({ opacity: 0 }, options.fadeOutDuration, options.fadeOutEasing);
+                        animate({ opacity: 0 }, duration, easing);
                     $image.
                         attr('alt', originalAlt).
                         stop(true).
-                        animate({ opacity: 1 }, options.fadeOutDuration, options.fadeOutEasing);
+                        animate({ opacity: 1 }, duration, easing);
                 };
             } else {
                 handlerIn = function () {
