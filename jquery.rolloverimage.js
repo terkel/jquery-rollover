@@ -12,29 +12,23 @@
         options = $.extend({}, $.fn.rolloverImage.defaults, options);
 
         var $this = $(this),
-            $images = $this.find('img, input[type="image"]').add($this.filter('img, input[type="image"]')),
             ext = '(\\.gif|\\.jpe?g|\\.png|\\.webp)$',
-            originalRegex = new RegExp('(' + options.originalSuffix + ')' + ext, 'i');
+            originalRegex = new RegExp('(' + options.originalSuffix + ')' + ext, 'i'),
+            imageSelector = 'img, input[type="image"]',
+            $images = $this.find(imageSelector).add($this.filter(imageSelector)).filter(function () {
+                return originalRegex.test(this.src);
+            });
 
         $images.each(function () {
 
             var $image = $(this),
                 originalSrc = $image.attr('src'),
-                rolloverSrc,
-                $rolloverImage,
-                $link,
-                $el,
+                rolloverSrc = originalSrc.replace(originalRegex, options.rolloverSuffix + '$2'),
+                $rolloverImage = $('<img/>').attr('src', rolloverSrc),
+                $link = $image.closest('a'),
+                $el = $link.length? $link: $image,
                 handlerIn,
                 handlerOut;
-
-            if (!originalRegex.test(originalSrc)) {
-                return;
-            }
-
-            rolloverSrc = originalSrc.replace(originalRegex, options.rolloverSuffix + '$2');
-            $rolloverImage = $('<img/>').attr('src', rolloverSrc);
-            $link = $image.closest('a');
-            $el = $link.length? $link: $image;
 
             if (options.fade && $.support.opacity) {
                 $image.before($rolloverImage.css({ opacity: 0, position: 'absolute' }));
