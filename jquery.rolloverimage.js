@@ -1,5 +1,5 @@
 /*!
- * jQuery Rollover Image plugin v0.9.4
+ * jQuery Rollover Image plugin v0.9.5
  * https://github.com/terkel/jquery-rolloverimage
  *
  * Copyright (c) 2013 Takeru Suzuki - http://terkel.jp/
