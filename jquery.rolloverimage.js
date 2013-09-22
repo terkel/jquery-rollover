@@ -34,28 +34,10 @@
             if (options.fade && $.support.opacity) {
                 $image.before($rolloverImage.css({ opacity: 0, position: 'absolute' }));
                 handlerIn = function () {
-                    var duration = options.fadeInDuration,
-                        easing = options.fadeInEasing;
-                    $rolloverImage.
-                        attr('alt', originalAlt).
-                        stop(true).
-                        animate({ opacity: 1 }, duration, easing);
-                    $image.
-                        attr('alt', '').
-                        stop(true).
-                        animate({ opacity: 0 }, duration, easing);
+                    crossFadeImages($rolloverImage, $image, originalAlt, options.fadeInDuration, options.fadeInEasing);
                 };
                 handlerOut = function () {
-                    var duration = options.fadeOutDuration,
-                        easing = options.fadeOutEasing;
-                    $rolloverImage.
-                        attr('alt', '').
-                        stop(true).
-                        animate({ opacity: 0 }, duration, easing);
-                    $image.
-                        attr('alt', originalAlt).
-                        stop(true).
-                        animate({ opacity: 1 }, duration, easing);
+                    crossFadeImages($image, $rolloverImage, originalAlt, options.fadeOutDuration, options.fadeOutEasing);
                 };
             } else {
                 handlerIn = function () {
@@ -74,6 +56,17 @@
                 });
 
         });
+
+        function crossFadeImages ($showImage, $hideImage, alt, duration, easing) {
+            $showImage.
+                attr('alt', alt).
+                stop(true).
+                animate({ opacity: 1 }, duration, easing);
+            $hideImage.
+                attr('alt', '').
+                stop(true).
+                animate({ opacity: 0 }, duration, easing);
+        }
 
         return this;
     };
