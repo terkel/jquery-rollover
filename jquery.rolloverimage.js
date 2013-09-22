@@ -37,21 +37,21 @@
                     $rolloverImage.
                         attr('alt', originalAlt).
                         stop(true).
-                        animate({ opacity: 1 }, options.fadeInDuration);
+                        animate({ opacity: 1 }, options.fadeInDuration, options.fadeInEasing);
                     $image.
                         attr('alt', '').
                         stop(true).
-                        animate({ opacity: 0 }, options.fadeInDuration);
+                        animate({ opacity: 0 }, options.fadeInDuration, options.fadeInEasing);
                 };
                 handlerOut = function () {
                     $rolloverImage.
                         attr('alt', '').
                         stop(true).
-                        animate({ opacity: 0 }, options.fadeOutDuration);
+                        animate({ opacity: 0 }, options.fadeOutDuration, options.fadeOutEasing);
                     $image.
                         attr('alt', originalAlt).
                         stop(true).
-                        animate({ opacity: 1 }, options.fadeOutDuration);
+                        animate({ opacity: 1 }, options.fadeOutDuration, options.fadeOutEasing);
                 };
             } else {
                 handlerIn = function () {
@@ -79,7 +79,9 @@
         rolloverSuffix:  '-on',
         fade:            false,
         fadeInDuration:  125,
-        fadeOutDuration: 250
+        fadeOutDuration: 250,
+        fadeInEasing:    'swing',
+        fadeOutEasing:   'swing'
     };
 
 })(jQuery);
