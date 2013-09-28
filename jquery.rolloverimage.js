@@ -1,5 +1,5 @@
 /*!
- * jQuery Rollover Image plugin v0.9.5
+ * jQuery Rollover plugin v0.9.6
  * https://github.com/terkel/jquery-rolloverimage
  *
  * Copyright (c) 2013 Takeru Suzuki - http://terkel.jp/
@@ -7,9 +7,9 @@
  */
 (function ($) {
 
-    $.fn.rolloverImage = function (options) {
+    $.fn.rollover = function (options) {
 
-        options = $.extend({}, $.fn.rolloverImage.defaults, options);
+        options = $.extend({}, $.fn.rollover.defaults, options);
 
         var $this = $(this),
             ext = '(\\.gif|\\.jpe?g|\\.png|\\.webp)$',
@@ -49,10 +49,10 @@
             }
 
             $el.
-                off('.rolloverImage').
+                off('.rollover').
                 on({
-                    'mouseenter.rolloverImage focus.rolloverImage': handlerIn,
-                    'mouseleave.rolloverImage blur.rolloverImage': handlerOut
+                    'mouseenter.rollover focus.rollover': handlerIn,
+                    'mouseleave.rollover blur.rollover': handlerOut
                 });
 
         });
@@ -71,7 +71,7 @@
         return this;
     };
 
-    $.fn.rolloverImage.defaults = {
+    $.fn.rollover.defaults = {
         originalSuffix:  '-off',
         rolloverSuffix:  '-on',
         fade:            false,
