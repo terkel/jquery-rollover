@@ -26,7 +26,7 @@
                 originalSrc = $image.attr('src'),
                 rolloverSrc = originalSrc.replace(originalRegex, options.rolloverSuffix + '$2'),
                 $rolloverImage = $('<img/>').attr('src', rolloverSrc),
-                $link = $image.closest('a'),
+                $link = $image.closest('a, button'),
                 $el = $link.length? $link: $image,
                 handlerIn,
                 handlerOut;
