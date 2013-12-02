@@ -1,6 +1,6 @@
 /*!
  * jQuery Rollover plugin v0.9.6
- * https://github.com/terkel/jquery-rolloverimage
+ * https://github.com/terkel/jquery-rollover
  *
  * Copyright (c) 2013 Takeru Suzuki - http://terkel.jp/
  * Licensed under the MIT license - http://opensource.org/licenses/MIT
