@@ -1,5 +1,5 @@
 /*!
- * jQuery Rollover plugin v0.9.6
+ * jQuery Rollover plugin v0.9.7
  * https://github.com/terkel/jquery-rollover
  *
  * Copyright (c) 2013 Takeru Suzuki - http://terkel.jp/
@@ -12,7 +12,7 @@
         options = $.extend({}, $.fn.rollover.defaults, options);
 
         var $this = $(this),
-            ext = '(\\.gif|\\.jpe?g|\\.png|\\.webp)$',
+            ext = '((@\\d+(\\.\\d+)?x)?\\.(gif|jpe?g|png|webp))$',
             originalRegex = new RegExp('(' + options.originalSuffix + ')' + ext, 'i'),
             imageSelector = 'img, input[type="image"]',
             $images = $this.find(imageSelector).add($this.filter(imageSelector)).filter(function () {
@@ -33,6 +33,10 @@
 
             if (options.fade && $.support.opacity) {
                 $image.before($rolloverImage.css({ opacity: 0, position: 'absolute' }));
+                $rolloverImage.attr({
+                    width: $image.attr('width'),
+                    height: $image.attr('height')
+                }),
                 handlerIn = function () {
                     crossFadeImages($rolloverImage, $image, originalAlt, options.fadeInDuration, options.fadeInEasing);
                 };
